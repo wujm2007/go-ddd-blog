@@ -40,7 +40,8 @@ func InitEventHandler(h eventHandler.CommentAddedHandler) {
 func main() {
 	app := fx.New(
 		fx.Supply(
-			persist.NewSqliteDB("test.db"),
+			//persist.NewSqliteDB("test.db"),
+			persist.NewPostgresDB("host=localhost user=postgres password=123456 dbname=postgres"),
 		),
 		fx.Provide(
 			idgenImpl.NewRandomIDGen,
